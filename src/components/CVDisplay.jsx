@@ -1,10 +1,9 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { sampleData } from '../sampleData';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
-function EducationItem(props) {
-  const item = props.item;
-
+function EducationItem({ item }) {
   const { degree, schoolName, location, startDate, endDate } = item;
   return (
     <div className="flex gap-2">
@@ -20,9 +19,7 @@ function EducationItem(props) {
   );
 }
 
-function ExperienceItem(props) {
-  const item = props.item;
-
+function ExperienceItem({ item }) {
   const {
     companyName,
     positionTitle,
@@ -47,11 +44,11 @@ function ExperienceItem(props) {
   );
 }
 
-function CVDisplay() {
-  const education = sampleData.sections.educations.map((education) => (
+function CVDisplay({ data }) {
+  const education = data.sections.educations.map((education) => (
     <EducationItem key={education.id} item={education} />
   ));
-  const experience = sampleData.sections.experiences.map((experience) => (
+  const experience = data.sections.experiences.map((experience) => (
     <ExperienceItem key={experience.id} item={experience} />
   ));
 
@@ -59,20 +56,20 @@ function CVDisplay() {
     <div className="max-w-[900px] shadow-lg">
       <div className="w-full flex flex-col p-4 pt-8 bg-teal-800 text-white">
         <h1 className="flex items-center justify-center text-3xl font-bold">
-          {sampleData.personalInfo.fullName}
+          {data.personalInfo.fullName}
         </h1>
         <div className="md:flex md:items-center md:justify-evenly p-4">
           <div className="flex items-center gap-2">
             <HiMail size={25} />
-            {sampleData.personalInfo.email}
+            {data.personalInfo.email}
           </div>
           <div className="flex items-center gap-2">
             <HiPhone size={25} />
-            {sampleData.personalInfo.phoneNumber}
+            {data.personalInfo.phoneNumber}
           </div>
           <div className="flex items-center gap-2">
             <HiLocationMarker className="pb-1" size={25} />
-            {sampleData.personalInfo.location}
+            {data.personalInfo.location}
           </div>
         </div>
       </div>
