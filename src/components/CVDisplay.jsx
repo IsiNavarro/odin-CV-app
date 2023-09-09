@@ -48,8 +48,7 @@ function ExperienceItem(props) {
 }
 
 function CVDisplay() {
-  //Display loop forEach(education item)
-  //Display loop forEach(experience item)
+
 
   const education = sampleData.sections.educations.map((education) => (
     <EducationItem key={education.id} item={education} />
@@ -57,6 +56,7 @@ function CVDisplay() {
   const experience = sampleData.sections.experiences.map((experience) => (
     <ExperienceItem key={experience.id} item={experience} />
   ));
+
 
   return (
     <div className="max-w-[900px] shadow-lg">
@@ -81,6 +81,7 @@ function CVDisplay() {
       </div>
       <div className="flex flex-col gap-2 items-center p-4 pt-8 bg-white">
         <div className="w-full flex flex-col py-2 gap-4">
+<<<<<<< HEAD
           <h3 className="py-1 mb-2  bg-gray-100 text-teal-900 font-bold text-center">
             Education
           </h3>
@@ -91,6 +92,20 @@ function CVDisplay() {
             Professional Experience
           </h3>
           {experience}
+=======
+          <h3 className="py-1 mb-2  bg-gray-100 text-teal-950 font-bold text-center">
+            Education
+          </h3>
+          <EducationItem item={education[0]} />
+          <EducationItem item={education[1]} />
+        </div>
+        <div className="w-full flex flex-col py-2 gap-4">
+          <h3 className="py-1 mb-2  bg-gray-100 text-teal-950 font-bold text-center">
+            Professional Experience
+          </h3>
+          <ExperienceItem item={experience[0]} />
+          <ExperienceItem item={experience[1]} />
+>>>>>>> 8a4d27dd565e849e4de813dcc67b5b1a0d139497
         </div>
       </div>
     </div>
