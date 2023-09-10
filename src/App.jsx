@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import CVDisplay from './components/CVDisplay';
 import { sampleData } from './sampleData';
-import uniqid from 'uniqid';
+import CVDisplay from './components/CVDisplay';
 import FillIn from './components/FillIn';
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
   };
 
   return (
-    <div className="w-full min-h-screen p-3 flex flex-col gap-5 bg-slate-100">
+    <div className="w-full min-h-screen p-3 flex flex-col lg:flex-row justify-center items-center gap-5 bg-slate-100">
       <FillIn data={userData} handlePersonalInfo={handlePersonalInfo} />
       <CVDisplay data={userData} />
     </div>

@@ -76,7 +76,7 @@ function CVDisplay({ data }) {
   ));
 
   return (
-    <div className="max-w-[900px] shadow-lg">
+    <div className="max-w-[950px] shadow-lg">
       <div className="w-full flex flex-col p-4 pt-8 bg-teal-800 text-white">
         <h1 className="flex items-center justify-center text-3xl font-bold">
           {data.personalInfo.fullName}
