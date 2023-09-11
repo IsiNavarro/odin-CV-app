@@ -24,9 +24,9 @@ function FillInExperience({ data }) {
         <GiSuitcase size={30} />
         Experience
       </h3>
-      <div className="flex flex-col gap-2 p-4">
+      <div className="flex flex-col gap-2 pt-4">
         <ExperienceList experience={data.sections.experiences} />
-        <button className="font-bold text-lg shadow-md w-fit py-1 px-4 self-center rounded-md bg-slate-200 hover:scale-105 duration-200">
+        <button className="font-bold text-lg shadow-md w-fit py-1 px-4 mt-3 self-center rounded-md bg-slate-200 hover:scale-105 duration-200">
           +
         </button>
       </div>
