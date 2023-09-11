@@ -1,6 +1,7 @@
 import React from 'react';
 import FillInExperience from './FillInExperience';
-import { FaUserCircle, FaUniversity } from 'react-icons/fa';
+import FillInEducation from './FillInEducation';
+import { FaUserCircle } from 'react-icons/fa';
 
 function FillInPersonalInfo({ data, handlePersonalInfo }) {
   const personalInfo = data.personalInfo;
@@ -61,17 +62,6 @@ function FillInPersonalInfo({ data, handlePersonalInfo }) {
           required
         />
       </form>
-    </div>
-  );
-}
-
-function FillInEducation({ data }) {
-  return (
-    <div className="w-full py-8 px-6 bg-white rounded-md">
-      <h3 className="font-bold text-2xl flex gap-2">
-        <FaUniversity size={28} />
-        Education
-      </h3>
     </div>
   );
 }

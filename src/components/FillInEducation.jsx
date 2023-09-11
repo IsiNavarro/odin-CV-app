@@ -1,9 +1,9 @@
 import React from 'react';
+import { FaUniversity } from 'react-icons/fa';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { GiSuitcase } from 'react-icons/gi';
 
-function FillInExperience({ data }) {
-  const ExperienceItem = ({ title }) => {
+function FillInEducation({ data }) {
+  const EducationItem = ({ title }) => {
     return (
       <div className="flex items-center justify-between border-b-4 py-2">
         <h4 className="text-lg">{title}</h4>
@@ -13,19 +13,19 @@ function FillInExperience({ data }) {
       </div>
     );
   };
-  const ExperienceList = ({ experience }) => {
-    return experience.map((item) => (
-      <ExperienceItem key={item.id} title={item.companyName} />
+  const EducationList = ({ education }) => {
+    return education.map((item) => (
+      <EducationItem key={item.id} title={item.degree} />
     ));
   };
   return (
     <div className="w-full py-8 px-6 bg-white rounded-md">
       <h3 className="font-bold text-2xl flex gap-2">
-        <GiSuitcase size={30} />
-        Experience
+        <FaUniversity size={30} />
+        Education
       </h3>
       <div className="flex flex-col gap-2 p-4">
-        <ExperienceList experience={data.sections.experiences} />
+        <EducationList education={data.sections.educations} />
         <button className="font-bold text-lg shadow-md w-fit py-1 px-4 self-center rounded-md bg-slate-200 hover:scale-105 duration-200">
           +
         </button>
@@ -34,4 +34,4 @@ function FillInExperience({ data }) {
   );
 }
 
-export default FillInExperience;
+export default FillInEducation;
