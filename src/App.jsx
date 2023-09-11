@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { sampleData } from './sampleData';
 import CVDisplay from './components/CVDisplay';
-import FillIn from './components/FillIn';
+import { FillIn } from './components/FillIn';
 
 function App() {
   const [userData, setUserData] = useState(sampleData);
