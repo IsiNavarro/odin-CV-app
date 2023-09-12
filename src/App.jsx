@@ -37,7 +37,8 @@ function App() {
   const handleNewItem = (e) => {
     const type = e.currentTarget.id;
 
-    type === 'education' ? setNewEducation(true) : setNewExperience(true);
+    if (type === 'education') setNewEducation(true);
+    if (type === 'experience') setNewExperience(true);
   };
 
   const handleEducationForm = (e) => {
@@ -70,6 +71,37 @@ function App() {
     setNewEducation(false);
   };
 
+  const handleExperienceForm = (e) => {
+    function formatDate(date) {
+      const options = { year: 'numeric', month: '2-digit' };
+      return new Date(date).toLocaleString(undefined, options);
+    }
+
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const formValues = {};
+    formData.forEach((value, key) => {
+      formValues[key] = value;
+    });
+
+    formValues.startDate = formatDate(formValues.startDate);
+    formValues.endDate = formatDate(formValues.endDate);
+    formValues.id = uniqid();
+
+    const newUserData = {
+      ...userData,
+      sections: {
+        ...userData.sections,
+        experiences: [...userData.sections.experiences, formValues],
+      },
+    };
+
+    setUserData(newUserData);
+    setNewExperience(false);
+  };
+
   return (
     <div className="w-full p-3 flex flex-col lg:flex-row justify-center items-center gap-5">
       <FillIn
@@ -78,7 +110,9 @@ function App() {
         handleDeleteItem={handleDeleteItem}
         handleNewItem={handleNewItem}
         newEducation={newEducation}
+        newExperience={newExperience}
         handleEducationForm={handleEducationForm}
+        handleExperienceForm={handleExperienceForm}
       />
       <CVDisplay data={userData} />
     </div>
