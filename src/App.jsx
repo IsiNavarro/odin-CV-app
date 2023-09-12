@@ -6,6 +6,8 @@ import FillIn from './components/FillIn';
 
 function App() {
   const [userData, setUserData] = useState(sampleData);
+  const [newEducation, setNewEducation] = useState(false);
+  const [newExperience, setNewExperience] = useState(false);
 
   const handlePersonalInfo = (e) => {
     const value = e.target.value;
@@ -34,6 +36,7 @@ function App() {
 
   const handleNewItem = (e) => {
     const type = e.currentTarget.id;
+    console.log(type);
 
     if (type === 'education') {
       const newUserData = {
@@ -54,6 +57,7 @@ function App() {
         },
       };
 
+      setNewEducation(true);
       setUserData(newUserData);
     } else {
       const newUserData = {
@@ -63,13 +67,12 @@ function App() {
           experiences: [
             ...userData.sections.experiences,
             {
-              companyName: 'SwissTech Solutions AG',
-              positionTitle: 'Senior Business Analyst',
-              location: 'Zürich, Schweiz',
-              description:
-                'Conducting market research and data analysis to identify business opportunities',
-              startDate: '10/2022',
-              endDate: 'present',
+              companyName: '',
+              positionTitle: '',
+              location: '',
+              description: '',
+              startDate: '',
+              endDate: '',
               id: uniqid(),
             },
           ],
@@ -80,6 +83,19 @@ function App() {
     }
   };
 
+  const handleEducationForm = (e) => {
+    const value = e.target.value;
+    console.log(value);
+
+    const updatedData = { ...userData };
+
+    updatedData.sections.educations[updatedData.sections.educations.length - 1][
+      e.target.name
+    ] = value;
+
+    setUserData(updatedData);
+  };
+
   return (
     <div className="w-full p-3 flex flex-col lg:flex-row justify-center items-center gap-5">
       <FillIn
@@ -87,6 +103,8 @@ function App() {
         handlePersonalInfo={handlePersonalInfo}
         handleDeleteItem={handleDeleteItem}
         handleNewItem={handleNewItem}
+        newEducation={newEducation}
+        handleEducationForm={handleEducationForm}
       />
       <CVDisplay data={userData} />
     </div>
