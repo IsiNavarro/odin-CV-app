@@ -10,8 +10,6 @@ function FillInEducation({
   newEducation,
   handleEducationForm,
 }) {
-  const handleAddButton = (e) => {};
-
   const EducationItem = ({ id, title, handleDeleteItem }) => {
     return (
       <div className="flex items-center justify-between border-b-4 py-2">
@@ -47,9 +45,13 @@ function FillInEducation({
       </button>
     );
   };
-  const EducationForm = () => {
+  const EducationForm = ({ handleEducationForm }) => {
     return (
-      <form action="" className="flex flex-col gap-2">
+      <form
+        action=""
+        onSubmit={handleEducationForm}
+        className="flex flex-col gap-2"
+      >
         <label htmlFor="degree" className="mt-2 font-bold">
           Degree
         </label>
@@ -57,7 +59,6 @@ function FillInEducation({
           type="text"
           id="degree"
           name="degree"
-          onChange={handleEducationForm}
           className="h-10 px-1 bg-slate-100 rounded-sm focus:border-blue-300"
           required
         />
@@ -68,7 +69,6 @@ function FillInEducation({
           type="text"
           id="schoolName"
           name="schoolName"
-          onChange={handleEducationForm}
           className="h-10 px-1 bg-slate-100 rounded-sm focus:border-blue-300"
           required
         />
@@ -79,7 +79,6 @@ function FillInEducation({
           type="date"
           id="startDate"
           name="startDate"
-          onChange={handleEducationForm}
           className="h-10 px-1 bg-slate-100 rounded-sm focus:border-blue-300"
           required
         />
@@ -90,7 +89,6 @@ function FillInEducation({
           type="date"
           id="endDate"
           name="endDate"
-          onChange={handleEducationForm}
           className="h-10 px-1 bg-slate-100 rounded-sm focus:border-blue-300"
           required
         />
@@ -101,14 +99,16 @@ function FillInEducation({
           type="text"
           id="location"
           name="location"
-          onChange={handleEducationForm}
           className="h-10 px-1  bg-slate-100 rounded-sm focus:border-blue-300"
           required
         />
-        <button className="text-white mt-2 py-2 bg-slate-700 rounded-sm">
+        <button
+          type="submit"
+          className="text-white mt-2 py-2 bg-slate-700 rounded-sm"
+        >
           Save
         </button>
-        <button onClick={() => {}} className="py-2 bg-slate-300 rounded-sm">
+        <button type="button" className="py-2 bg-slate-300 rounded-sm">
           Cancel
         </button>
       </form>
@@ -126,7 +126,11 @@ function FillInEducation({
           education={data.sections.educations}
           handleDeleteItem={handleDeleteItem}
         />
-        {newEducation ? <EducationForm /> : <AddButton />}
+        {newEducation ? (
+          <EducationForm handleEducationForm={handleEducationForm} />
+        ) : (
+          <AddButton />
+        )}
       </div>
     </div>
   );

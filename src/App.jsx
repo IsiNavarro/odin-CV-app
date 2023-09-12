@@ -36,64 +36,38 @@ function App() {
 
   const handleNewItem = (e) => {
     const type = e.currentTarget.id;
-    console.log(type);
 
-    if (type === 'education') {
-      const newUserData = {
-        ...userData,
-        sections: {
-          ...userData.sections,
-          educations: [
-            ...userData.sections.educations,
-            {
-              degree: 'M.Sc. in Business Administration',
-              schoolName: 'University of Zürich',
-              location: 'Zürich, Schweiz',
-              startDate: '01/2023',
-              endDate: 'present',
-              id: uniqid(),
-            },
-          ],
-        },
-      };
-
-      setNewEducation(true);
-      setUserData(newUserData);
-    } else {
-      const newUserData = {
-        ...userData,
-        sections: {
-          ...userData.sections,
-          experiences: [
-            ...userData.sections.experiences,
-            {
-              companyName: '',
-              positionTitle: '',
-              location: '',
-              description: '',
-              startDate: '',
-              endDate: '',
-              id: uniqid(),
-            },
-          ],
-        },
-      };
-
-      setUserData(newUserData);
-    }
+    type === 'education' ? setNewEducation(true) : setNewExperience(true);
   };
 
   const handleEducationForm = (e) => {
-    const value = e.target.value;
-    console.log(value);
+    function formatDate(date) {
+      const options = { year: 'numeric', month: '2-digit' };
+      return new Date(date).toLocaleString(undefined, options);
+    }
 
-    const updatedData = { ...userData };
+    e.preventDefault();
 
-    updatedData.sections.educations[updatedData.sections.educations.length - 1][
-      e.target.name
-    ] = value;
+    const formData = new FormData(e.target);
 
-    setUserData(updatedData);
+    const formValues = {};
+    formData.forEach((value, key) => {
+      formValues[key] = value;
+    });
+
+    formValues.startDate = formatDate(formValues.startDate);
+    formValues.endDate = formatDate(formValues.endDate);
+    formValues.id = uniqid();
+
+    const newUserData = {
+      ...userData,
+      sections: {
+        ...userData.sections,
+        educations: [...userData.sections.educations, formValues],
+      },
+    };
+    setUserData(newUserData);
+    setNewEducation(false);
   };
 
   return (
