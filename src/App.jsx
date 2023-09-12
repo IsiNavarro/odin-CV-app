@@ -18,7 +18,7 @@ function App() {
 
   const handleDeleteItem = (e) => {
     console.log(e.currentTarget.id);
-    const newEducation = {
+    const newUserData = {
       ...userData,
       sections: {
         educations: userData.sections.educations.filter(
@@ -29,8 +29,8 @@ function App() {
         ),
       },
     };
-    console.log(newEducation);
-    setUserData(newEducation);
+
+    setUserData(newUserData);
   };
 
   return (

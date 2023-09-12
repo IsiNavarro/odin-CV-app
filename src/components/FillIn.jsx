@@ -8,7 +8,7 @@ const FillIn = ({ data, handlePersonalInfo, handleDeleteItem }) => {
     <div className="min-w-full sm:min-w-[425px] flex flex-col gap-4">
       <FillInPersonalInfo data={data} handlePersonalInfo={handlePersonalInfo} />
       <FillInEducation data={data} handleDeleteItem={handleDeleteItem} />
-      <FillInExperience data={data} />
+      <FillInExperience data={data} handleDeleteItem={handleDeleteItem} />
     </div>
   );
 };
