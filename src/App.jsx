@@ -101,6 +101,13 @@ function App() {
     setUserData(newUserData);
     setNewExperience(false);
   };
+  const handleCancelButton = (e) => {
+    e.preventDefault;
+    const type = e.currentTarget.id;
+
+    if (type === 'education') setNewEducation(false);
+    if (type === 'experience') setNewExperience(false);
+  };
 
   return (
     <div className="w-full p-3 flex flex-col lg:flex-row justify-center items-center gap-5">
@@ -113,6 +120,7 @@ function App() {
         newExperience={newExperience}
         handleEducationForm={handleEducationForm}
         handleExperienceForm={handleExperienceForm}
+        handleCancelButton={handleCancelButton}
       />
       <CVDisplay data={userData} />
     </div>

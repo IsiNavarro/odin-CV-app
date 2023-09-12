@@ -9,6 +9,7 @@ function FillInExperience({
   handleNewItem,
   newExperience,
   handleExperienceForm,
+  handleCancelButton,
 }) {
   const ExperienceItem = ({ id, title, handleDeleteItem }) => {
     return (
@@ -107,7 +108,12 @@ function FillInExperience({
         >
           Save
         </button>
-        <button type="button" className="py-2 bg-slate-300 rounded-sm">
+        <button
+          type="button"
+          id="experience"
+          onClick={handleCancelButton}
+          className="py-2 bg-slate-300 rounded-sm"
+        >
           Cancel
         </button>
       </form>

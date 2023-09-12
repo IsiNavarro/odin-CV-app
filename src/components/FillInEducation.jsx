@@ -9,6 +9,7 @@ function FillInEducation({
   handleNewItem,
   newEducation,
   handleEducationForm,
+  handleCancelButton,
 }) {
   const EducationItem = ({ id, title, handleDeleteItem }) => {
     return (
@@ -108,7 +109,12 @@ function FillInEducation({
         >
           Save
         </button>
-        <button type="button" className="py-2 bg-slate-300 rounded-sm">
+        <button
+          type="button"
+          id="education"
+          className="py-2 bg-slate-300 rounded-sm"
+          onClick={handleCancelButton}
+        >
           Cancel
         </button>
       </form>

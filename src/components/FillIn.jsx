@@ -12,6 +12,7 @@ const FillIn = ({
   newExperience,
   handleEducationForm,
   handleExperienceForm,
+  handleCancelButton,
 }) => {
   return (
     <div className="min-w-full sm:min-w-[425px] flex flex-col gap-4">
@@ -22,6 +23,7 @@ const FillIn = ({
         handleNewItem={handleNewItem}
         newEducation={newEducation}
         handleEducationForm={handleEducationForm}
+        handleCancelButton={handleCancelButton}
       />
       <FillInExperience
         data={data}
@@ -29,6 +31,7 @@ const FillIn = ({
         handleNewItem={handleNewItem}
         newExperience={newExperience}
         handleExperienceForm={handleExperienceForm}
+        handleCancelButton={handleCancelButton}
       />
     </div>
   );
