@@ -3,7 +3,7 @@ import React from 'react';
 import { FaUniversity } from 'react-icons/fa';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 
-function FillInEducation({ data, handleDeleteItem }) {
+function FillInEducation({ data, handleDeleteItem, handleNewItem }) {
   const EducationItem = ({ id, title, handleDeleteItem }) => {
     return (
       <div className="flex items-center justify-between border-b-4 py-2">
@@ -40,7 +40,12 @@ function FillInEducation({ data, handleDeleteItem }) {
           education={data.sections.educations}
           handleDeleteItem={handleDeleteItem}
         />
-        <button className="font-bold text-lg shadow-md w-fit py-1 px-4 mt-3 self-center rounded-md bg-slate-200 hover:scale-105 duration-200">
+
+        <button
+          id="education"
+          onClick={handleNewItem}
+          className="font-bold text-lg shadow-md w-fit py-1 px-4 mt-3 self-center rounded-md bg-slate-200 hover:scale-105 duration-200"
+        >
           +
         </button>
       </div>

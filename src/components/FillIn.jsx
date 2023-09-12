@@ -3,12 +3,25 @@ import FillInPersonalInfo from './FillInPersonalInfo';
 import FillInExperience from './FillInExperience';
 import FillInEducation from './FillInEducation';
 
-const FillIn = ({ data, handlePersonalInfo, handleDeleteItem }) => {
+const FillIn = ({
+  data,
+  handlePersonalInfo,
+  handleDeleteItem,
+  handleNewItem,
+}) => {
   return (
     <div className="min-w-full sm:min-w-[425px] flex flex-col gap-4">
       <FillInPersonalInfo data={data} handlePersonalInfo={handlePersonalInfo} />
-      <FillInEducation data={data} handleDeleteItem={handleDeleteItem} />
-      <FillInExperience data={data} handleDeleteItem={handleDeleteItem} />
+      <FillInEducation
+        data={data}
+        handleDeleteItem={handleDeleteItem}
+        handleNewItem={handleNewItem}
+      />
+      <FillInExperience
+        data={data}
+        handleDeleteItem={handleDeleteItem}
+        handleNewItem={handleNewItem}
+      />
     </div>
   );
 };
