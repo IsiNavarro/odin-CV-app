@@ -121,7 +121,7 @@ function App() {
   return (
     <div className="w-full p-3 flex flex-col lg:flex-row justify-center gap-5">
       <div className="flex flex-col items-center gap-2">
-        <PDFButton />
+        {/*<PDFButton />*/}
         <FillIn
           data={userData}
           handlePersonalInfo={handlePersonalInfo}
@@ -134,7 +134,6 @@ function App() {
           handleCancelButton={handleCancelButton}
         />
       </div>
-
       <CVDisplay data={userData} />
     </div>
   );
