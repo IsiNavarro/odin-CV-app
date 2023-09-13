@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import FillInPersonalInfo from './FillInPersonalInfo';
 import FillInExperience from './FillInExperience';

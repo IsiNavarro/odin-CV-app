@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
+import { FaFilePdf } from 'react-icons/fa';
 import { sampleData } from './sampleData';
 import CVDisplay from './components/CVDisplay';
 import FillIn from './components/FillIn';
@@ -108,20 +109,32 @@ function App() {
     if (type === 'education') setNewEducation(false);
     if (type === 'experience') setNewExperience(false);
   };
+  const PDFButton = () => {
+    return (
+      <button className="flex items-center justify-center gap-2 bg-red-500 text-white font-bold px-2 py-1 pt-2 rounded-sm self-stretch">
+        <FaFilePdf size={30} className="mb-2" />
+        View PDF
+      </button>
+    );
+  };
 
   return (
-    <div className="w-full p-3 flex flex-col lg:flex-row justify-center items-center gap-5">
-      <FillIn
-        data={userData}
-        handlePersonalInfo={handlePersonalInfo}
-        handleDeleteItem={handleDeleteItem}
-        handleNewItem={handleNewItem}
-        newEducation={newEducation}
-        newExperience={newExperience}
-        handleEducationForm={handleEducationForm}
-        handleExperienceForm={handleExperienceForm}
-        handleCancelButton={handleCancelButton}
-      />
+    <div className="w-full p-3 flex flex-col lg:flex-row justify-center gap-5">
+      <div className="flex flex-col items-center gap-2">
+        <PDFButton />
+        <FillIn
+          data={userData}
+          handlePersonalInfo={handlePersonalInfo}
+          handleDeleteItem={handleDeleteItem}
+          handleNewItem={handleNewItem}
+          newEducation={newEducation}
+          newExperience={newExperience}
+          handleEducationForm={handleEducationForm}
+          handleExperienceForm={handleExperienceForm}
+          handleCancelButton={handleCancelButton}
+        />
+      </div>
+
       <CVDisplay data={userData} />
     </div>
   );
