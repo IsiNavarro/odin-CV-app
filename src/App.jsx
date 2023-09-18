@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import uniqid from 'uniqid';
 import { FaFilePdf } from 'react-icons/fa';
 import { sampleData } from './sampleData';
 import CVDisplay from './components/CVDisplay';
 import FillIn from './components/FillIn';
+import { useReactToPrint } from 'react-to-print';
 
 function App() {
   const [userData, setUserData] = useState(sampleData);
@@ -111,17 +112,26 @@ function App() {
   };
   const PDFButton = () => {
     return (
-      <button className="flex items-center justify-center gap-2 bg-red-500 text-white font-bold px-2 py-1 pt-2 rounded-sm self-stretch">
+      <button
+        onClick={handlePrint}
+        className="flex items-center justify-center gap-2 bg-red-500 text-white font-bold px-2 py-1 pt-2 rounded-sm xl:self-stretch"
+      >
         <FaFilePdf size={30} className="mb-2" />
         View PDF
       </button>
     );
   };
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: `${userData.personalInfo.fullName}'s Resume`,
+  });
+
   return (
-    <div className="w-full p-3 flex flex-col lg:flex-row justify-center gap-5">
+    <div className="w-full p-3 flex flex-col xl:flex-row justify-center gap-5">
       <div className="flex flex-col items-center gap-2">
-        {/*<PDFButton />*/}
+        <PDFButton />
         <FillIn
           data={userData}
           handlePersonalInfo={handlePersonalInfo}
@@ -134,7 +144,7 @@ function App() {
           handleCancelButton={handleCancelButton}
         />
       </div>
-      <CVDisplay data={userData} />
+      <CVDisplay data={userData} reference={componentRef} />
     </div>
   );
 }

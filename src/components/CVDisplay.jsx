@@ -1,7 +1,7 @@
 import React from 'react';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
-function CVDisplay({ data }) {
+function CVDisplay({ data, reference }) {
   function EducationItem({ item }) {
     const { degree, schoolName, location, startDate, endDate } = item;
     return (
@@ -76,29 +76,31 @@ function CVDisplay({ data }) {
   ));
 
   return (
-    <div className="lg:w-[950px] shadow-lg self-start">
-      <div className="w-full flex flex-col p-4 pt-8 bg-teal-800 text-white">
-        <h1 className="flex items-center justify-center text-3xl font-bold">
-          {data.personalInfo.fullName}
-        </h1>
-        <div className="md:flex md:items-center md:justify-evenly p-4">
-          <div className="flex items-center gap-2">
-            <HiMail size={25} />
-            {data.personalInfo.email}
-          </div>
-          <div className="flex items-center gap-2">
-            <HiPhone size={25} />
-            {data.personalInfo.phoneNumber}
-          </div>
-          <div className="flex items-center gap-2">
-            <HiLocationMarker className="pb-1" size={25} />
-            {data.personalInfo.location}
+    <div className="shadow-lg self-start">
+      <div className="lg:w-[950px]" ref={reference}>
+        <div className="w-full flex flex-col p-4 pt-8 bg-teal-800 text-white">
+          <h1 className="flex items-center justify-center text-3xl font-bold">
+            {data.personalInfo.fullName}
+          </h1>
+          <div className="md:flex md:items-center md:justify-evenly p-4">
+            <div className="flex items-center gap-2">
+              <HiMail size={25} />
+              {data.personalInfo.email}
+            </div>
+            <div className="flex items-center gap-2">
+              <HiPhone size={25} />
+              {data.personalInfo.phoneNumber}
+            </div>
+            <div className="flex items-center gap-2">
+              <HiLocationMarker className="pb-1" size={25} />
+              {data.personalInfo.location}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col gap-2 items-center min-h-[80vh] p-4 pt-8 bg-white">
-        <Education />
-        <Experience />
+        <div className="flex flex-col gap-2 items-center min-h-[80vh] p-4 pt-8 bg-white">
+          <Education />
+          <Experience />
+        </div>
       </div>
     </div>
   );
