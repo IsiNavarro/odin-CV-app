@@ -1,6 +1,6 @@
 <h1 align="center" id="title">CV App</h1>
 
-<p id="description">This project was part of The Odin Project's JavaScript curriculum. The main goal of this project was to build a CV generator using React.  The CV generator consists of two main sections: the control and the visualization sections. In the control section, the user can input, edit and delete their information. The information inputted in the control section will be available in real-time in the visualization section. When finished, the user can then download their CV properly formatted in PDF. This project was made using React JS. </p>
+<p id="description">This project was part of The Odin Project's React course, as part of the JavaScript curriculum. The main goal of this project was to build a CV generator using React.  The CV generator consists of two main sections: the control and the visualization sections. In the control section, the user can input, edit and delete their information. The information inputted in the control section will be available in real-time in the visualization section. When finished, the user can then download their CV properly formatted in PDF. This project was made using React JS. </p>
 
 <h2>🚀 Live Demo</h2>
 
